@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SRRP - Login</title>
+    <link rel="stylesheet" href="./css/bulma.css">
+    <link rel="icon" href="./img/5a28cde75f3f57.9444955815126235913901.png">
+    <style>
+        .back {
+            background-color: aquamarine;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="columns">
+        <div class="column is-6 is-12-mobile">
+            <section class="section">
+                <div class="" style="margin: 80px;">
+                    <div class="field">
+                        <h2 class="title"> <span><img src="./img/5a28cde75f3f57.9444955815126235913901.png" alt="logo"
+                                    height="40px" width="40px"></span> SRRP - Login</h2>
+                        <label class="label">Index Number</label>
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="email" placeholder="Index Number" id="index_number_field"
+                                name="index_number_field">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <p class="control has-icons-left">
+                            <input class="input" type="password" placeholder="Password" id="password_field"
+                                name="password_field">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-lock"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control">
+                            <button class="button is-success" id="login_button">
+                                Login
+                            </button>
+                        </p>
+                    </div>
+
+                    <a href="./signup.html">Create an account</a>
+
+                </div>
+
+            </section>
+        </div>
+        <div class="column is-6 back is-0-mobile">
+
+        </div>
+    </div>
+
+
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/login.js"></script>
+</body>
+
+</html>

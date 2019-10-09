@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SRRP - Home</title>
+    <link rel="icon" href="./img/5a28cde75f3f57.9444955815126235913901.png">
+    <link rel="stylesheet" href="./css/bulma.css">
+</head>
+
+<body>
+    <div class="show-when-logged-in">
+        <div class="main">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="Home.html">
+                        <img src="./img/5a28cde75f3f57.9444955815126235913901.png" width="28" height="28">
+                    </a>
+
+                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                        data-target="navbarBasicExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a href="Home.html" class="navbar-item">
+                            Home
+                        </a>
+
+                        <a href="" class="navbar-item">
+                            Documentation
+                        </a>
+
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                More
+                            </a>
+
+                            <div class="navbar-dropdown">
+                                <a class="navbar-item">
+                                    About
+                                </a>
+                                <a class="navbar-item">
+                                    Contact
+                                </a>
+                                <hr class="navbar-divider">
+                                <a class="navbar-item">
+                                    Reports
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a class="button is-primary" href="register.html">
+                                    <strong>Register</strong>
+                                </a>
+                                <a class="button is-light show_profile_button">
+                                    Check Status
+                                </a>
+                                <a class="button is-danger logout_button">
+                                    Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <section class="hero is-primary is-medium is-bold">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">
+                            Welcome to Sear Residential Registration Portal
+                        </h1>
+                        <h2 class="subtitle">
+                            reliability, trust and integrity
+                        </h2>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>SRRP</strong> by <a href="https://searconsults.herokuapp.com">Joojo Quartey - Developer
+                        at
+                        Sear Consults</a>. The source code is licensed
+                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                    is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <div class="show-when-not-logged-in">
+        <section class="hero  is-fullheight  is-bold is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h2 class="title"> <span><img src="./img/5a28cde75f3f57.9444955815126235913901.png" alt="logo"
+                                height="40px" width="40px"></span> SRRP </h2>
+                    <p class="title is-2">:( Unfortunately you are not logged in</p>
+                    <p class="subtitle is-3">Log in maybe?</p>
+                    <a href="/index.html" class="button is-info is-large">Login</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal logout_modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title ">Warning</p>
+            </header>
+            <section class="modal-card-body">
+                <div class="content">
+                    <h1 class="has-text-danger">Log Out?</h1>
+                    <p>Are you sure you want to log out?</p>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-danger log-out">Logout</button>
+                <button class="button is-primary cancel-modal">Cancel</button>
+            </footer>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+
+    <div class="modal profile_modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">User Profile</p>
+                <button class="delete cancel-modal" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="content" id="profile_modal_content">
+                    <!-- Injected By Javascript -->
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success cancel-modal">OK</button>
+            </footer>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/dashboard.js"></script>
+</body>
+
+</html>
