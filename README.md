@@ -4,6 +4,9 @@
   Index Number - 10671406
   Name - Joojo Quartey
   
+## Requirements
+Have nodejs installed in your command line
+  
 ### Installation
   Clone this repository in your command line with
     ```
@@ -20,3 +23,5 @@ then run
 ```bash
 npm install && npm run serve
 ```
+
+
