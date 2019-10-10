@@ -6,9 +6,8 @@
   
 ### Installation
   Clone this repository in your command line with
-  
     ```bash
-    git clone https://github.com/eustacequartey/cscd-311-project-web
+    git clone https://github.com/eustacequartey/cscd-311-project-web.git
     ```
 
   Enter the cloned repository with
