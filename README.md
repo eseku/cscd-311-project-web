@@ -6,14 +6,15 @@
   
 ### Installation
   Clone this repository in your command line with
+  
     ```bash
-git clone https://github.com/eustacequartey/cscd-311-project-web
-```
+    git clone https://github.com/eustacequartey/cscd-311-project-web
+    ```
 
   Enter the cloned repository with
   ```bash
-cd cscd-311-project-web
-```
+  cd cscd-311-project-web
+  ```
 
 
 then run
