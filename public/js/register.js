@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 $(() => {
 
     if (!localStorage.frontend_user_profile) {
@@ -16,6 +8,15 @@ $(() => {
         $('.show-when-logged-in').show()
         $('.show-when-not-logged-in').hide()
     }
+
+    // Check for click events on the navbar burger icon
+    $(".navbar-burger").click(function () {
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+
+    });
 
     populate_profile_modal()
     populate_hall_table()
@@ -118,7 +119,7 @@ function handleClickHostelsTab() {
         $('#page-content').html('')
         $('#page-content').append(
             `<div class="table-container" >
-            <table class="table is-striped is-hoverable is-fullwidth" id="hostel_table">
+            <table class="table is-striped is-hoverable is-fullwidth" id="hostel_table" style="margin-bottom:50px">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -176,7 +177,7 @@ function handleRoomsTables() {
 
                         data.length !== 0 ? $('#page-content').append(
                             `<div class=table-container id=page-content-rooms-table>
-                            <h2 class=" is-size-5"><strong>${name}</strong><span><button class=button>Back to Halls</button></span></h2>
+                            <h2 class=" is-size-5"><strong>${name}</strong></h2>
                             <table class="table is-striped is-hoverable is-fullwidth" id=rooms_table>
                                 <thead>
                                     <tr>
@@ -235,23 +236,51 @@ function handleRegisterRoom() {
         }
 
         try {
-            $.post(`http://localhost:3000/${JSON.parse(localStorage.getItem('frontend_user_profile'))._id}/register/${e.target.id}`,
-                (data, status) => {
-                    console.log(data, status)
+            // $.post(`http://localhost:3000/${JSON.parse(localStorage.getItem('frontend_user_profile'))._id}/register/${e.target.id}`,
+            //     (data, status) => {
+            //         console.log(data, status)
+            // let psudoHalls = JSON.parse(localStorage.getItem('halls'))
+            //         if (data) {
+            // localStorage.setItem('frontend_user_profile', JSON.stringify(data.student))
+            // psudoHalls.forEach(hall => {
+            //     if (hall._id == data.hostel._id) {
+            //         hall = data.hostel
+            //     }
+            //             })
+            //             localStorage.setItem('halls', JSON.stringify(psudoHalls))
+            //             populate_profile_modal()
+            //             modalfunction()
+            //             // toastr.success('You have successfully been registered', 'Success')
+            //         }
+            //     })
+
+
+
+            $.ajax({
+                url: 'http://localhost:3000/register/'.concat(e.target.id),
+                type: 'POST',
+                data: {},
+                beforeSend(req) {
+                    req.setRequestHeader("Authorization", "Bearer ".concat(JSON.parse(localStorage.getItem('frontend_user_token'))))
+                },
+                success(data) {
                     let psudoHalls = JSON.parse(localStorage.getItem('halls'))
-                    if (data) {
-                        localStorage.setItem('frontend_user_profile', JSON.stringify(data.student))
-                        psudoHalls.forEach(hall => {
-                            if (hall._id == data.hostel._id) {
-                                hall = data.hostel
-                            }
-                        })
-                        localStorage.setItem('halls', JSON.stringify(psudoHalls))
-                        populate_profile_modal()
-                        modalfunction()
-                        // toastr.success('You have successfully been registered', 'Success')
-                    }
-                })
+                    localStorage.setItem('frontend_user_profile', JSON.stringify(data.student))
+                    let hallApplied = new String
+                    psudoHalls.forEach(hall => {
+                        if (hall._id == data.hostel._id) {
+                            hall = data.hostel
+                            hallApplied = hall
+                        }
+                    })
+                    return toastr.success('You have successfully registered for room' + data.room.number + '\n in ' + hallApplied.name, 'Success')
+                },
+                error(e) {
+                    console.log(e);
+                }
+            })
+
+
         } catch (error) {
             console.log(error);
         }

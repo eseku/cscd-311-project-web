@@ -27,8 +27,8 @@ $('#confirm_password_field, #password_field').on('keyup', function () {
 
     if ($('#password_field').val() != $('#confirm_password_field').val()) {
         $('#password_field, #confirm_password_field').removeClass('is-primary').addClass('is-danger')
-        $('.passwords').children()[2].removeClass('is-primary').addClass('is-danger')
-        $('.passwords').children()[2].text('Passwords must match')
+        // $('.passwords').children()[2].removeClass('is-primary').addClass('is-danger')
+        // $('.passwords').children()[2].text('Passwords must match')
     }
 
 })
@@ -76,9 +76,11 @@ const register = (object) => {
             object,
             (data, status) => {
                 if (data.error) {
-                    return toastr.error(data.error, 'Error')
+                    // return toastr.error(data.error, 'Error')
+                    return console.log(data)
                 }
-                localStorage.setItem('frontend_user_profile', JSON.stringify(data))
+                localStorage.setItem('frontend_user_profile', JSON.stringify(data.student))
+                localStorage.setItem('frontend_user_token', JSON.stringify(data.token))
                 window.location.href = 'home.html'
             })
     } catch (error) {

@@ -10618,17 +10618,6 @@ toastr.options = {
 
 
 
-$(document).ready(function () {
-
-	// Check for click events on the navbar burger icon
-	$(".navbar-burger").click(function () {
-
-		// Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-		$(".navbar-burger").toggleClass("is-active");
-		$(".navbar-menu").toggleClass("is-active");
-
-	});
-});
 
 
 
@@ -10636,14 +10625,32 @@ $('.logout_button').click(() => {
 	$('.logout_modal').toggleClass('is-active')
 
 	$('.log-out').click(() => {
-		localStorage.removeItem('frontend_user_profile')
-		window.location.href = 'index.html'
-	})
 
-	$(".modal-close , .cancel-modal").click(function () {
-		$("html").removeClass("is-clipped");
-		$('.logout_modal').removeClass("is-active");
-	});
+		$.ajax({
+			url: 'http://localhost:3000/exit',
+			type: 'POST',
+			data: {},
+			beforeSend(req) {
+				let a = req.setRequestHeader("Authorization", "Bearer ".concat(JSON.parse(localStorage.getItem('frontend_user_token'))))
+				console.log(a);
+
+			},
+			success() {
+				localStorage.removeItem('frontend_user_profile')
+				localStorage.removeItem('frontend_user_token')
+				window.location.href = 'index.html'
+			},
+			error(e) {
+				return toastr.error(e, 'Error')
+			}
+		})
+
+		$(".modal-close, .cancel_logout_modal").click(function () {
+			$("html").removeClass("is-clipped");
+			$('.logout_modal').removeClass("is-active");
+		});
+
+	})
 
 })
 

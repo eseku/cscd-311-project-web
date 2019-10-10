@@ -1,32 +1,33 @@
-console.log('working');
-
-
-
-
 const login = () => {
     if (!$('#index_number_field').val() || !$('#password_field').val()) {
         return toastr.error('Empty Credentials', 'Warning')
     }
 
     try {
-        $.post('http://localhost:3000/login', {
+        $.post('http://localhost:3000/students/login', {
             indexNumber: $('#index_number_field').val(),
             password: $('#password_field').val()
         }, (data, status) => {
+
             console.log(data, status)
+
             if (!data.error) {
-                localStorage.setItem('frontend_user_profile', JSON.stringify(data))
+                localStorage.setItem('frontend_user_profile', JSON.stringify(data.student))
+                localStorage.setItem('frontend_user_token', JSON.stringify(data.token))
                 return window.location.href = 'home.html'
             } else {
-                return toastr.error(data.error, 'Error')
+                return toastr.error('Authentication Error', 'Error')
             }
         })
     } catch (error) {
         // console.log(error);
-        return toastr.error('error')
+        return toastr.error('Authentication Error')
     }
 }
 
+$('#login_button').click(() => {
+
+})
 
 $(() => {
     if (localStorage.frontend_user_profile) {
@@ -50,9 +51,6 @@ $(() => {
             }
         }
     )
-
-
-
 
 })
 
