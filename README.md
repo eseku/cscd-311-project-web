@@ -18,5 +18,5 @@
 
 then run
 ```bash
-npm install
+npm install && npm run serve
 ```
